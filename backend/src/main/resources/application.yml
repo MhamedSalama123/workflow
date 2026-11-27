@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: workflow-backend
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/workflow}
+    username: ${DB_USER:workflow}
+    password: ${DB_PASSWORD:workflow}
+  jpa:
+    # Flyway owns the schema; Hibernate only checks that entities match it.
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    locations: classpath:db/migration
+
+server:
+  port: ${PORT:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true

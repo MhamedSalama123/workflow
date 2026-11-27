@@ -17,16 +17,25 @@ A maintenance platform (CMMS) where employees report problems, managers assign t
 
 ## Run locally
 
+Requirements: Docker, Java 21, Node 24.
+
 ```bash
 cp .env.example .env
-docker compose up -d
+docker compose up -d                 # PostgreSQL, MinIO, Mailpit
+
+cd backend && ./mvnw spring-boot:run # API on :8080
+cd frontend && npm install && npm run dev   # UI on :5173
 ```
 
-| Service        | URL                      |
-|----------------|--------------------------|
-| PostgreSQL     | `localhost:5432`         |
-| MinIO console  | http://localhost:9001    |
-| Mailpit inbox  | http://localhost:8025    |
+| Service        | URL                                  |
+|----------------|--------------------------------------|
+| Frontend       | http://localhost:5173                |
+| API health     | http://localhost:8080/actuator/health |
+| PostgreSQL     | `localhost:5432`                     |
+| MinIO console  | http://localhost:9001                |
+| Mailpit inbox  | http://localhost:8025                |
+
+Tests: `cd backend && ./mvnw verify` (needs Docker for Testcontainers) and `cd frontend && npm test`.
 
 ## Project docs
 

@@ -1,0 +1,5 @@
+# Store text files with LF in the repo; Windows checkouts convert as needed.
+* text=auto
+*.sh text eol=lf
+mvnw text eol=lf
+*.cmd text eol=crlf

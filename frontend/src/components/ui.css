@@ -1,0 +1,95 @@
+/* Button */
+.btn {
+  min-height: var(--touch-target);
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-graphite);
+  border-radius: var(--radius);
+  font: 600 15px var(--font-body);
+  cursor: pointer;
+}
+.btn--primary { background: var(--color-graphite); color: var(--color-on-primary); }
+.btn--secondary { background: var(--color-plate); color: var(--color-graphite); }
+.btn--attention { background: var(--color-signal); color: #1b1f23; border-color: #1b1f23; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Field */
+.field { display: flex; flex-direction: column; gap: var(--space-1); }
+.field__input {
+  min-height: var(--touch-target);
+  padding: 0 var(--space-2);
+  border: var(--border);
+  border-radius: var(--radius);
+  background: var(--color-plate);
+  color: var(--color-graphite);
+  font: 16px var(--font-body);
+}
+textarea.field__input { padding: var(--space-1) var(--space-2); min-height: 96px; resize: vertical; }
+.field__error { color: var(--color-fault); font-size: 14px; }
+
+/* Status light */
+.status-light { display: inline-flex; align-items: center; gap: var(--space-1); }
+.status-light__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  flex-shrink: 0;
+}
+.status-light__dot--running { background: var(--color-running); }
+.status-light__dot--attention { background: var(--color-signal); }
+.status-light__dot--fault { background: var(--color-fault); }
+.status-light__dot--off { background: var(--color-rivet); }
+
+/* Tag (priority, stamps) */
+.tag {
+  display: inline-block;
+  padding: 2px var(--space-1);
+  border: 1px solid var(--color-graphite);
+  border-radius: 2px;
+  font: 600 12px var(--font-heading);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.tag--critical { background: var(--color-fault); border-color: var(--color-fault); color: #fff; }
+.tag--attention { background: var(--color-signal); border-color: var(--color-signal); color: #1b1f23; }
+.tag--solid { background: var(--color-graphite); color: var(--color-on-primary); }
+
+/* Nameplate */
+.nameplate {
+  position: relative;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-plate-inset);
+  border: var(--border);
+  border-radius: var(--radius);
+}
+.nameplate__rivet {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-rivet);
+}
+.nameplate__rivet--tl { top: 8px; left: 8px; }
+.nameplate__rivet--tr { top: 8px; right: 8px; }
+.nameplate__rivet--bl { bottom: 8px; left: 8px; }
+.nameplate__rivet--br { bottom: 8px; right: 8px; }
+.nameplate__serial { font: 13px var(--font-mono); color: var(--color-text-muted); }
+.nameplate__title { font-size: 32px; margin: 4px 0; }
+.nameplate__meta { color: var(--color-text-muted); font-size: 14px; }
+
+/* Hazard banner */
+.hazard {
+  border: 2px solid var(--color-graphite);
+  border-radius: var(--radius);
+  background: var(--color-plate);
+  overflow: hidden;
+}
+.hazard__stripe {
+  height: 12px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #1b1f23 0 10px,
+    var(--color-signal) 10px 20px
+  );
+}
+.hazard__body { padding: var(--space-2); display: flex; flex-direction: column; gap: var(--space-1); }

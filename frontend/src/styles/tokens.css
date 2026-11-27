@@ -1,0 +1,45 @@
+/*
+ * WorkFlow design tokens: "Industrial nameplate".
+ * Rule: color means something. Signal yellow appears only where something needs attention.
+ */
+:root {
+  /* Colors */
+  --color-steel: #eceeef;       /* page background */
+  --color-plate: #ffffff;       /* cards, panels, forms */
+  --color-graphite: #1b1f23;    /* text, primary buttons, headers */
+  --color-rivet: #8e979f;       /* borders, dividers */
+  --color-text-muted: #5c656d;  /* secondary text: rivet grey is too light for AA on white */
+  --color-signal: #f5b700;      /* attention only; text on it is always graphite */
+  --color-running: #2e9e5b;     /* status light: running, resolved */
+  --color-fault: #d7263d;       /* status light: down, critical */
+  --color-plate-inset: #f4f5f6; /* nameplate engraving */
+  --color-on-primary: #ffffff;
+
+  /* Typography */
+  --font-heading: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* 8 px grid */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-6: 48px;
+
+  /* Shapes: flat, 1 px borders, small radius, no shadows */
+  --radius: 3px;
+  --border: 1px solid var(--color-rivet);
+  --touch-target: 48px; /* gloves */
+}
+
+/* Dark "control room" mode */
+[data-theme='dark'] {
+  --color-steel: #111417;
+  --color-plate: #1b1f23;
+  --color-graphite: #e8eaec;
+  --color-rivet: #5c656d;
+  --color-text-muted: #a3abb2;
+  --color-plate-inset: #22272c;
+  --color-on-primary: #111417;
+}
