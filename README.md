@@ -11,7 +11,7 @@ A maintenance platform (CMMS) where employees report problems, managers assign t
 | Backend  | Java 21, Spring Boot 3, Spring Security, Spring Data JPA |
 | Frontend | React, TypeScript, Vite                             |
 | Database | PostgreSQL 16 + pgvector, Flyway migrations         |
-| Storage  | S3-compatible (MinIO locally)                       |
+| Storage  | S3-compatible (SeaweedFS locally)                   |
 | Email    | Mailpit locally                                     |
 | DevOps   | Docker Compose, GitHub Actions                      |
 
@@ -21,7 +21,7 @@ Requirements: Docker, Java 21, Node 24.
 
 ```bash
 cp .env.example .env
-docker compose up -d                 # PostgreSQL, MinIO, Mailpit
+docker compose up -d                 # PostgreSQL, S3 storage, Mailpit
 
 cd backend && ./mvnw spring-boot:run # API on :8080
 cd frontend && npm install && npm run dev   # UI on :5173
@@ -32,7 +32,7 @@ cd frontend && npm install && npm run dev   # UI on :5173
 | Frontend       | http://localhost:5173                |
 | API health     | http://localhost:8080/actuator/health |
 | PostgreSQL     | `localhost:5432`                     |
-| MinIO console  | http://localhost:9001                |
+| S3 API         | http://localhost:8333 (file browser :8888) |
 | Mailpit inbox  | http://localhost:8025                |
 
 Tests: `cd backend && ./mvnw verify` (needs Docker for Testcontainers) and `cd frontend && npm test`.

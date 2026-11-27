@@ -19,18 +19,18 @@ services:
       timeout: 5s
       retries: 10
 
-  minio:
-    image: minio/minio:latest
-    container_name: workflow-minio
-    command: server /data --console-address ":9001"
-    environment:
-      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-workflow}
-      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-workflow-secret}
+  s3:
+    # SeaweedFS: S3-compatible object storage for photos and attachments.
+    # Dev-only credentials live in infra/seaweedfs/s3.json.
+    image: chrislusf/seaweedfs:latest
+    container_name: workflow-s3
+    command: server -dir=/data -s3 -s3.config=/etc/seaweedfs/s3.json
     ports:
-      - "9000:9000"   # S3 API
-      - "9001:9001"   # web console
+      - "8333:8333"   # S3 API
+      - "8888:8888"   # file browser
     volumes:
-      - minio-data:/data
+      - s3-data:/data
+      - ./infra/seaweedfs/s3.json:/etc/seaweedfs/s3.json:ro
 
   mailpit:
     image: axllent/mailpit:latest
@@ -41,4 +41,4 @@ services:
 
 volumes:
   postgres-data:
-  minio-data:
+  s3-data:

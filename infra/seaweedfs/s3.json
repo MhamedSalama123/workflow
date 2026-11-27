@@ -1,0 +1,11 @@
+{
+  "identities": [
+    {
+      "name": "workflow-dev",
+      "credentials": [
+        { "accessKey": "workflow-dev", "secretKey": "workflow-dev-secret" }
+      ],
+      "actions": ["Admin", "Read", "Write", "List", "Tagging"]
+    }
+  ]
+}
