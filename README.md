@@ -1,5 +1,7 @@
 # WorkFlow
 
+[![CI](https://github.com/MhamedSalama123/workflow/actions/workflows/ci.yml/badge.svg)](https://github.com/MhamedSalama123/workflow/actions/workflows/ci.yml)
+
 A maintenance platform (CMMS) where employees report problems, managers assign them, and technicians fix them. It includes preventive maintenance, QR codes, reports and AI-assisted triage.
 
 > Status: Phase 0, planning and setup. Live demo coming in Phase 1.
@@ -8,7 +10,7 @@ A maintenance platform (CMMS) where employees report problems, managers assign t
 
 | Layer    | Choice                                              |
 |----------|-----------------------------------------------------|
-| Backend  | Java 21, Spring Boot 3, Spring Security, Spring Data JPA |
+| Backend  | Java 21, Spring Boot 4, Spring Security, Spring Data JPA |
 | Frontend | React, TypeScript, Vite                             |
 | Database | PostgreSQL 16 + pgvector, Flyway migrations         |
 | Storage  | S3-compatible (SeaweedFS locally)                   |
