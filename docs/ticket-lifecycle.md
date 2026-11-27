@@ -32,9 +32,14 @@ stateDiagram-v2
 | WAITING_FOR_PARTS | IN_PROGRESS        | Assigned technician                    | |
 | IN_PROGRESS       | RESOLVED           | Assigned technician                    | Solution note required; checklist complete for planned tickets (P2) |
 | RESOLVED          | CLOSED             | Reporter, Manager, Admin, system job   | System closes after 7 days without a reaction |
-| RESOLVED          | IN_PROGRESS        | Reporter, Manager, Admin               | Reopen; a comment is required |
+| RESOLVED          | IN_PROGRESS        | Reporter, Manager, Admin               | Reopen; a `reason` is required (10–500 chars, trimmed). It is stored as `STATUS_HISTORY.note` and also posted as a `TicketComment` by the same user |
 
-`CLOSED` and `REJECTED` are final.
+`CLOSED` and `REJECTED` are final. On final tickets, Employees and Technicians can still read comments but not add them (`409`); Managers and Admins may still comment (see [permissions.md](permissions.md)).
+
+## Error codes
+- `409 Conflict`: a transition that isn't in the table, or a comment on a locked ticket.
+- `403 Forbidden`: the user can see the ticket, but their role may not make this transition (for example an employee starting work).
+- `404 Not Found`: the user may not see the ticket at all. This applies to every ticket endpoint and hides that the ticket exists.
 
 ## Why a state machine?
 - One place defines all the rules, so the API, the UI buttons and the tests can't drift apart.
